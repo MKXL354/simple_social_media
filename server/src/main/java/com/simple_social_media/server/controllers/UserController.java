@@ -32,7 +32,7 @@ public class UserController {
     @GetMapping("/{userName}/posts")
     public List<Post> getPost(@PathVariable("userName") String userName) {
         User user = userRepo.findByUserName(userName).get(0);
-        return postRepo.findByUser(user);
+        return postRepo.find(user.getId());
     }
 }
 // post, like, delete post, get posts, delete like, follow, delete follow

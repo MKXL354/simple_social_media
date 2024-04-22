@@ -1,5 +1,6 @@
 package com.simple_social_media.server.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,6 +15,8 @@ public class Post {
 
     @ManyToOne
     private User user;
+
+    @Column(nullable = false)
     private String text;
     private int likes;
 

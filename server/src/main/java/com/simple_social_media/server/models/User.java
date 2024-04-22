@@ -2,6 +2,7 @@ package com.simple_social_media.server.models;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -14,7 +15,11 @@ public class User {
     @Id
     @GeneratedValue
     private int id;
+
+    @Column(nullable = false, unique = true)
     private String userName;
+
+    @Column(nullable = false)
     private String passWord;
 
     @ManyToMany

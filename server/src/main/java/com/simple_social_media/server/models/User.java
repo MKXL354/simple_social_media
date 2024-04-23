@@ -31,6 +31,10 @@ public class User {
     @JsonIgnore
     private List<Post> posts;
 
+    @ManyToMany
+    @JsonIgnore
+    private List<Post> likedPosts;
+
     public int getId() {
         return id;
     }
@@ -69,6 +73,14 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public List<Post> getLikedPosts() {
+        return likedPosts;
+    }
+
+    public void setLikedPosts(List<Post> likedPosts) {
+        this.likedPosts = likedPosts;
     }
 
 }

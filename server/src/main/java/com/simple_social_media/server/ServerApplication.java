@@ -11,3 +11,4 @@ public class ServerApplication {
 	}
 
 }
+// TODO: jsonIgnore and infinite loop

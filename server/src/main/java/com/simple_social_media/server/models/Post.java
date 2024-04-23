@@ -1,11 +1,14 @@
 package com.simple_social_media.server.models;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -21,7 +24,10 @@ public class Post {
 
     @Column(nullable = false)
     private String text;
-    private int likes;
+
+    @ManyToMany(mappedBy = "likedPosts")
+    @JsonIgnore
+    private List<User> usersLiked;
 
     public int getId() {
         return id;
@@ -39,17 +45,9 @@ public class Post {
         this.text = text;
     }
 
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
     @Override
     public String toString() {
-        return "user= " + user.getUserName() + ", likes= " + likes + "\ntext=" + text;
+        return "user= " + user.getUserName() + ", likes= " + usersLiked.size() + "\ntext=" + text;
     }
 
     public User getUser() {
@@ -58,6 +56,14 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<User> getUsersLiked() {
+        return usersLiked;
+    }
+
+    public void setUsersLiked(List<User> usersLiked) {
+        this.usersLiked = usersLiked;
     }
 
 }
